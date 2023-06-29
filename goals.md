@@ -8,3 +8,5 @@ In this one, we must be able to get an indexeddb inside an async function and us
 Test suggestion:
     Check if the instance is indeed returned
     Check if the onupgradeneeded is called
+
+## [] Get data from a store through a promise
