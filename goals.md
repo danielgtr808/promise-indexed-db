@@ -11,4 +11,8 @@ Test suggestion:
 
 ## \[x\] Get data from a store through a promise
 
-## [] Delete data from a store through a promise
+## \[x\] Delete data from a store through a promise
+
+## \[x\] Wrap the "clear" method of a store through a promise
+
+## \[x\] Implement the listener for changes on a "put" action
