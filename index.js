@@ -55,6 +55,8 @@ async function init() {
 
     const store = storePromise(db, "testStore", "readwrite")
     let result = await store.get(1)
+
+    console.log(result)
     console.log(result.target.result)
 
 }
