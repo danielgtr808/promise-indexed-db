@@ -31,6 +31,22 @@ const openDbPromise = (dbName, dbVersion, onUpgradeNeededCallback = () => { }) =
 
 const storePromise = (db, storeName, mode) => {
     return {
+        delete: async (query) => {
+            const transaction = db.transaction(storeName, mode);
+            const store = transaction.objectStore(storeName);
+            const deleteResult = store.delete(query);
+
+            return new Promise((resolve, reject) => {
+                deleteResult.onerror = e => {
+                    reject(e)
+                };
+
+                deleteResult.onsuccess = e => {
+                    resolve(e)
+                }
+            })
+
+        },
         get: async (query) => {
             const transaction = db.transaction(storeName, mode);
             const store = transaction.objectStore(storeName);
@@ -53,12 +69,13 @@ async function init() {
     const openDbRequest = await openDbPromise("test", 1, createDb);
     const db = openDbRequest.target.result;
 
-    const store = storePromise(db, "testStore", "readwrite")
-    let result = await store.get(1)
+    const store = storePromise(db, "testStore", "readwrite");
 
-    console.log(result)
-    console.log(result.target.result)
+    let result = await store.get(1);
+    console.log(result.target.result);
 
+    result = await store.delete(1);
+    console.log(result);
 }
 
 init()

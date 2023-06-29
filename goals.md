@@ -9,4 +9,6 @@ Test suggestion:
     Check if the instance is indeed returned
     Check if the onupgradeneeded is called
 
-## [] Get data from a store through a promise
+## \[x\] Get data from a store through a promise
+
+## [] Delete data from a store through a promise
